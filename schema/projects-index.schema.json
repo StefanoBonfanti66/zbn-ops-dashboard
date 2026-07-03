@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Projects Index Item",
+  "type": "object",
+  "required": [
+    "slug",
+    "name",
+    "phase",
+    "state",
+    "next_action",
+    "invoice_count",
+    "ledger_status",
+    "commercial_risk"
+  ],
+  "properties": {
+    "slug": { "type": "string" },
+    "name": { "type": "string" },
+    "phase": { "type": "string" },
+    "state": { "type": "string", "enum": ["active", "closed", "archived", "unknown"] },
+    "last_commit": { "type": ["string", "null"] },
+    "last_commit_relative": { "type": ["string", "null"] },
+    "next_action": { "type": "string" },
+    "revenue_eur": { "type": ["number", "null"] },
+    "costs_eur": { "type": ["number", "null"] },
+    "margin_eur": { "type": ["number", "null"] },
+    "invoice_count": { "type": "integer", "minimum": 0 },
+    "ledger_status": { "type": "string", "enum": ["template-only", "partial", "updated", "missing"] },
+    "commercial_risk": { "type": "string", "enum": ["high", "medium", "low", "none"] }
+  },
+  "additionalProperties": false
+}

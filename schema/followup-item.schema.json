@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Followup Item",
+  "type": "object",
+  "required": [
+    "id",
+    "project_slug",
+    "title",
+    "status",
+    "phase",
+    "type",
+    "blocking",
+    "owner",
+    "next_review_at",
+    "next_action"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "project_slug": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["urgent", "pending", "snooze", "done"] },
+    "phase": { "type": "string" },
+    "type": { "type": "string" },
+    "blocking": { "type": "boolean" },
+    "owner": { "type": "string" },
+    "last_touch_at": { "type": ["string", "null"] },
+    "next_review_at": { "type": "string" },
+    "next_action": { "type": "string" },
+    "notes_short": { "type": ["string", "null"] },
+    "source_path": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

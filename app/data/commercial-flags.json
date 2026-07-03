@@ -1,0 +1,20 @@
+[
+  {
+    "project_slug": "ecommerce-vetronaviglio",
+    "risk_level": "high",
+    "reason": "Progetto attivo con blocco critico, zero ricavi, zero fatture, ledger non compilato",
+    "action_needed": "Aprire decisione su milestone fatturabile o scope ridotto"
+  },
+  {
+    "project_slug": "magie-su-excel",
+    "risk_level": "high",
+    "reason": "Progetto da consegnare senza fattura e senza ledger operativo",
+    "action_needed": "Inviare deliverable e chiarire step economico successivo"
+  },
+  {
+    "project_slug": "vetronaviglio-report-visite",
+    "risk_level": "high",
+    "reason": "Progetto live con feedback sospeso e stato economico non tracciato",
+    "action_needed": "Chiudere feedback e aprire confronto su fatturazione"
+  }
+]

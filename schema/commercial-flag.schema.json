@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commercial Flag",
+  "type": "object",
+  "required": ["project_slug", "risk_level", "reason", "action_needed"],
+  "properties": {
+    "project_slug": { "type": "string" },
+    "risk_level": { "type": "string", "enum": ["high", "medium", "low", "none"] },
+    "reason": { "type": "string" },
+    "action_needed": { "type": "string" }
+  },
+  "additionalProperties": false
+}
