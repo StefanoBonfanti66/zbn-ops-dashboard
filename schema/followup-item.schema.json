@@ -1,33 +1,45 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Followup Item",
+  "description": "Item di follow-up operativo ZBN. Campi required sono minimi; i campi arricchiti (priority, waiting_on, notes, tags) provengono dai dati reali dei repo progetto.",
   "type": "object",
   "required": [
     "id",
     "project_slug",
     "title",
     "status",
-    "phase",
-    "type",
-    "blocking",
     "owner",
-    "next_review_at",
-    "next_action"
+    "next_action",
+    "next_review_at"
   ],
   "properties": {
-    "id": { "type": "string" },
-    "project_slug": { "type": "string" },
-    "title": { "type": "string" },
-    "status": { "type": "string", "enum": ["urgent", "pending", "snooze", "done"] },
-    "phase": { "type": "string" },
-    "type": { "type": "string" },
-    "blocking": { "type": "boolean" },
-    "owner": { "type": "string" },
-    "last_touch_at": { "type": ["string", "null"] },
-    "next_review_at": { "type": "string" },
-    "next_action": { "type": "string" },
-    "notes_short": { "type": ["string", "null"] },
-    "source_path": { "type": ["string", "null"] }
+    "id": { "type": "string", "description": "Identificativo univoco slug-based" },
+    "project_slug": { "type": "string", "description": "Corrisponde al nome repo progetto" },
+    "title": { "type": "string", "description": "Titolo descrittivo del follow-up" },
+    "status": {
+      "type": "string",
+      "enum": ["urgent", "pending", "snooze", "done"],
+      "description": "urgent=attesa>5gg o blocco, pending=attesa recente, snooze=da rivedere, done=risolta"
+    },
+    "phase": { "type": "string", "description": "Fase di progetto: Esecuzione, Live, Da consegnare, Manutenzione, ecc." },
+    "type": { "type": "string", "description": "Natura: blocco, delivery, maintenance, review, decision, escalation" },
+    "blocking": { "type": "boolean", "description": "True se impedisce avanzamento" },
+    "owner": { "type": "string", "description": "Chi possiede l'item" },
+    "priority": { "type": "string", "enum": ["high", "medium", "low"], "description": "Priorità operativa" },
+    "waiting_on": { "type": ["string", "null"], "description": "Chi o cosa sta bloccando / in attesa" },
+    "next_action": { "type": "string", "description": "Prossima azione concreta" },
+    "due_date": { "type": ["string", "null"], "format": "date", "description": "Scadenza se applicabile" },
+    "snooze_until": { "type": ["string", "null"], "format": "date", "description": "Se snoozed, data di rientro" },
+    "next_review_at": { "type": "string", "format": "date", "description": "Prossima data di revisione" },
+    "notes": { "type": ["string", "null"], "description": "Note operative estese" },
+    "notes_short": { "type": ["string", "null"], "description": "Nota sintetica per dashboard" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tag di classificazione (es. cliente, blocco, delivery, mvp)"
+    },
+    "last_touch_at": { "type": ["string", "null"], "format": "date-time", "description": "Ultima modifica" },
+    "source_path": { "type": ["string", "null"], "description": "Path nel repo progetto (es. docs/project/...)" }
   },
   "additionalProperties": false
 }

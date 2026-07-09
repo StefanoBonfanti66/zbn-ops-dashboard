@@ -1,0 +1,9 @@
+{
+  "name": "zbn-ops-dashboard",
+  "private": true,
+  "type": "module",
+  "description": "ZBN Ops Dashboard — follow-up, portfolio, flag commerciali e catalogo progetti",
+  "dependencies": {
+    "serve": "^14.2.6"
+  }
+}

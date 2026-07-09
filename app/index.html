@@ -9,7 +9,7 @@
 <body>
   <header class="wrap">
     <h1>ZBN Ops Dashboard</h1>
-    <p>Follow-up, portfolio e rischio commerciale.</p>
+    <p>Catalogo progetti, follow-up, portfolio e rischio commerciale.</p>
   </header>
 
   <main class="wrap stack">
@@ -19,7 +19,35 @@
     </section>
 
     <section>
+      <h2>Progetti</h2>
+      <p class="section-desc">Tutti i progetti GitHub + progetti ZBN tracciati. Cerca, filtra, copia comandi.</p>
+      <div class="controls-bar">
+        <label>Cerca: <input type="search" id="search" placeholder="nome, next action"></label>
+        <label>Priorità: <select id="priority-filter"><option value="">tutte</option><option value="high">high</option><option value="medium">medium</option><option value="low">low</option></select></label>
+        <label>Macchina: <select id="machine-filter"><option value="">tutte</option><option value="ubuntu-usb">ubuntu-usb</option><option value="windows-home">windows-home</option></select></label>
+        <label>Stato: <select id="state-filter"><option value="">tutti</option><option value="active">active</option><option value="closed">closed</option></select></label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Progetto</th>
+              <th>Stato</th>
+              <th>Priorità</th>
+              <th>Fase</th>
+              <th>Next action</th>
+              <th>Macchina</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="projects-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
       <h2>Follow-up</h2>
+      <p class="section-desc">Item aperti che richiedono attenzione.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -27,6 +55,7 @@
               <th>Progetto</th>
               <th>Titolo</th>
               <th>Stato</th>
+              <th>Priority</th>
               <th>Next review</th>
               <th>Next action</th>
             </tr>
@@ -38,10 +67,12 @@
 
     <section>
       <h2>Flag commerciali</h2>
-      <div id="flags-list" class="stack"></div>
+      <p class="section-desc">Rischi commerciali e azioni necessarie.</p>
+      <div id="flags-list" class="grid"></div>
     </section>
   </main>
 
+  <div id="toast" class="toast"></div>
   <script src="./assets/app.js" defer></script>
 </body>
 </html>
