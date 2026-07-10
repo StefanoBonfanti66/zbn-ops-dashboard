@@ -28,4 +28,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app/data/
           git diff --cached --quiet || git commit -m "chore: refresh dashboard data [skip ci]"
-          git push
+          git push "https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git"
