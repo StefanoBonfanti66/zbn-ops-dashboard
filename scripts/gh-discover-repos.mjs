@@ -130,7 +130,7 @@ for (const entry of projects) {
   const agentsContent = getAgentsMd(repoName);
   if (agentsContent) {
     const parsed = parseAgentsMd(agentsContent);
-    if (parsed.next_action && parsed.next_action !== entry.next_action) {
+    if (parsed.next_action && !entry.next_action) {
       changelog.push(`${entry.slug}: next_action → "${parsed.next_action}"`);
       entry.next_action = parsed.next_action;
     }

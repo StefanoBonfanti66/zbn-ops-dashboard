@@ -112,7 +112,7 @@ for (const entry of projects) {
   const agentsPath = path.resolve(repoPath, "AGENTS.md");
   if (fs.existsSync(agentsPath)) {
     const parsed = parseAgentsMd(fs.readFileSync(agentsPath, "utf8"));
-    if (parsed.next_action && parsed.next_action !== entry.next_action) {
+    if (parsed.next_action && !entry.next_action) {
       changelog.push(`${entry.slug}: next_action → "${parsed.next_action}"`);
       entry.next_action = parsed.next_action;
     }
