@@ -27,7 +27,7 @@
   {
     "id": "magie-su-excel-delivery",
     "project_slug": "magie-su-excel",
-    "title": "Inviare a Margherita Colombo il file `docs/elenco fornitoriconemail.xlsx` e la bozza email in `docs/project/email-colombo-fornitori.md`. Attendere feedback per recuperare i contatti dei 43 fornitori mancanti.",
+    "title": "Usare lo script per eventuali nuovi file CSV/XLSX da Chiara o altri fornitori.",
     "status": "urgent",
     "phase": "Da consegnare",
     "type": "delivery",
@@ -35,7 +35,7 @@
     "owner": "stefano",
     "priority": "high",
     "waiting_on": null,
-    "next_action": "Inviare a Margherita Colombo il file `docs/elenco fornitoriconemail.xlsx` e la bozza email in `docs/project/email-colombo-fornitori.md`. Attendere feedback per recuperare i contatti dei 43 fornitori mancanti.",
+    "next_action": "Usare lo script per eventuali nuovi file CSV/XLSX da Chiara o altri fornitori.",
     "due_date": "2026-07-04",
     "snooze_until": null,
     "next_review_at": "2026-07-10",
@@ -45,7 +45,7 @@
       "delivery",
       "cliente"
     ],
-    "last_touch_at": "2026-07-10T14:47:56.564Z",
+    "last_touch_at": "2026-07-10T14:49:59.304Z",
     "source_path": null
   },
   {
