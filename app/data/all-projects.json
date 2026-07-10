@@ -175,7 +175,7 @@
     "project_where_command": "/project-where gestione_spese_famiglia",
     "opencode_command": "cd C:\\Users\\localadm\\github\\gestione_spese_famiglia && opencode",
     "_phase": "Manutenzione",
-    "_state": "active",
+    "_state": "blocked",
     "_commercial_risk": "medium",
     "_revenue_eur": null,
     "_invoice_count": 0,
