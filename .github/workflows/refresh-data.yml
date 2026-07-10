@@ -3,7 +3,7 @@ name: Refresh dashboard data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 7 * * 1"
+    - cron: "0 7 * * *"
 
 jobs:
   refresh:
@@ -17,9 +17,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Full sync (enrich projects + regenerate summary + validate)
-        run: |
-          node scripts/sync-from-projects.mjs
+      - name: Full refresh pipeline (discover → sync → build)
+        run: node scripts/refresh-dashboard.mjs --ci
+        env:
+          GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
       - name: Commit if changed
         run: |
