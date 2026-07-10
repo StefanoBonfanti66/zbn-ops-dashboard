@@ -151,7 +151,7 @@
   {
     "id": "gestione-spese-famiglia-cron-verify",
     "project_slug": "gestione_spese_famiglia",
-    "title": "Verificare prossima esecuzione cron job per confermare sincronizzazione email funzionante",
+    "title": "[TEST DASHBOARD] Verificare prossima esecuzione cron job per confermare sincronizzazione email funzionante",
     "status": "pending",
     "phase": "Manutenzione",
     "type": "maintenance",
@@ -159,7 +159,7 @@
     "owner": "stefano",
     "priority": "low",
     "waiting_on": null,
-    "next_action": "Verificare prossima esecuzione cron job per confermare sincronizzazione email funzionante",
+    "next_action": "[TEST DASHBOARD] Verificare prossima esecuzione cron job per confermare sincronizzazione email funzionante",
     "due_date": null,
     "snooze_until": null,
     "next_review_at": "2026-07-18",
@@ -169,7 +169,7 @@
       "manutenzione",
       "cron"
     ],
-    "last_touch_at": "2026-07-10T14:47:56.564Z",
+    "last_touch_at": "2026-07-10T14:54:35.125Z",
     "source_path": null
   }
 ]
