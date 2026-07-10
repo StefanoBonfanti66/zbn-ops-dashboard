@@ -93,7 +93,7 @@
     "slug": "gestione_spese_famiglia",
     "name": "Gestione Spese Famiglia",
     "phase": "Manutenzione",
-    "state": "active",
+    "state": "blocked",
     "last_commit": "0497c9f",
     "last_commit_relative": "6 settimane fa",
     "next_action": "Verificare prossima esecuzione cron job per confermare sincronizzazione email funzionante",
