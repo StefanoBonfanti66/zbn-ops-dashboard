@@ -78,7 +78,7 @@
     "slug": "analisi-bollette",
     "name": "Analisi Bollette",
     "phase": "Manutenzione",
-    "state": "active",
+    "state": "blocked",
     "last_commit": "1089fe4",
     "last_commit_relative": "6 settimane fa",
     "next_action": "Scegliere nuova funzionalità o finalizzare",
