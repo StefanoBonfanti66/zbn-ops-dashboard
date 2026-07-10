@@ -71,7 +71,37 @@ for (const ap of allProjects) {
 writeJson(DATA.allProjects, allProjects);
 changelog.push(`all-projects.json: ${allProjects.length} progetti, ${mergedCount} arricchiti da projects-index`);
 
-// Step 3: regenerate summary
+// Step 3: sync followup-items.json with projects-index.json
+const projectBySlugFollowup = {};
+for (const p of projects) {
+  projectBySlugFollowup[p.slug] = p;
+}
+
+let followupUpdatedCount = 0;
+for (const f of followups) {
+  const match = projectBySlugFollowup[f.project_slug];
+  if (!match) continue;
+  let changed = false;
+  if (match.next_action && match.next_action !== f.next_action) {
+    f.next_action = match.next_action;
+    f.title = match.next_action;
+    changed = true;
+  }
+  if (match.phase && match.phase !== f.phase) {
+    f.phase = match.phase;
+    changed = true;
+  }
+  if (changed) {
+    f.last_touch_at = new Date().toISOString();
+    followupUpdatedCount++;
+  }
+}
+if (followupUpdatedCount > 0) {
+  writeJson(DATA.followups, followups);
+  changelog.push(`followup-items.json: ${followupUpdatedCount} item aggiornati da projects-index`);
+}
+
+// Step 4: regenerate summary
 const summary = {
   generated_at: new Date().toISOString(),
   projects_active: projects.filter((p) => p.state === "active").length,
@@ -90,7 +120,7 @@ const summary = {
 writeJson(DATA.summary, summary);
 changelog.push(`portfolio-summary.json rigenerato: ${summary.projects_active} attivi, ${summary.followup_urgent} urgent, ${summary.followup_pending} pending`);
 
-// Step 4: validate all JSON files
+// Step 5: validate all JSON files
 const validationErrors = [];
 for (const [key, dataPath] of Object.entries(DATA)) {
   try {

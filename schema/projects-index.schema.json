@@ -16,7 +16,7 @@
     "slug": { "type": "string" },
     "name": { "type": "string" },
     "phase": { "type": "string" },
-    "state": { "type": "string", "enum": ["active", "closed", "archived", "unknown"] },
+    "state": { "type": "string", "enum": ["active", "blocked", "closed", "archived", "unknown"] },
     "last_commit": { "type": ["string", "null"] },
     "last_commit_relative": { "type": ["string", "null"] },
     "next_action": { "type": "string" },

@@ -111,6 +111,14 @@ let foundRemotely = 0;
 
 for (const entry of projects) {
   let repoName = slugToRepo[entry.slug];
+  if (!repoName) {
+    const altSlug = entry.slug.replace(/_/g, "-");
+    repoName = slugToRepo[altSlug];
+  }
+  if (!repoName) {
+    const altSlug2 = entry.slug.replace(/-/g, "_");
+    repoName = slugToRepo[altSlug2];
+  }
   if (!repoName) repoName = entry.slug; // fallback: slug=repo name
 
   const info = getRepoInfo(repoName);
@@ -130,13 +138,16 @@ for (const entry of projects) {
   const agentsContent = getAgentsMd(repoName);
   if (agentsContent) {
     const parsed = parseAgentsMd(agentsContent);
-    if (parsed.next_action && !entry.next_action) {
-      changelog.push(`${entry.slug}: next_action → "${parsed.next_action}"`);
-      entry.next_action = parsed.next_action;
+    if (parsed.next_action) {
+      if (entry.next_action !== parsed.next_action) {
+        changelog.push(`${entry.slug}: next_action "${entry.next_action}" → "${parsed.next_action}"`);
+        entry.next_action = parsed.next_action;
+      }
     }
-    if (parsed.has_bloccato && entry.state !== "blocked") {
-      changelog.push(`${entry.slug}: stato → blocked (da AGENTS.md)`);
-      entry.state = "blocked";
+    const newState = parsed.has_bloccato ? "blocked" : "active";
+    if (entry.state !== newState && (entry.state === "active" || entry.state === "blocked")) {
+      changelog.push(`${entry.slug}: stato ${entry.state} → ${newState}`);
+      entry.state = newState;
     }
   }
 
