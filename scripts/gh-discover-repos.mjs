@@ -110,8 +110,8 @@ let updatedCount = 0;
 let foundRemotely = 0;
 
 for (const entry of projects) {
-  const repoName = slugToRepo[entry.slug];
-  if (!repoName) continue;
+  let repoName = slugToRepo[entry.slug];
+  if (!repoName) repoName = entry.slug; // fallback: slug=repo name
 
   const info = getRepoInfo(repoName);
   if (!info) {
