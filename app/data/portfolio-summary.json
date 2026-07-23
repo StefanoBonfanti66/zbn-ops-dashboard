@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-23T13:01:34.927Z",
-  "projects_active": 5,
+  "generated_at": "2026-07-23T13:32:54.328Z",
+  "projects_active": 6,
   "projects_closed": 0,
-  "projects_unclassified": 22,
+  "projects_unclassified": 21,
   "followup_urgent": 1,
   "followup_pending": 5,
   "followup_snooze": 1,
   "commercial_flags_high": 5,
   "commercial_flags_medium": 2,
-  "revenue_total_eur": 0,
-  "invoices_total": 0,
+  "revenue_total_eur": 10200,
+  "invoices_total": 1,
   "ledger_template_only_count": 7
 }

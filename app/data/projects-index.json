@@ -103,5 +103,20 @@
     "invoice_count": 0,
     "ledger_status": "template-only",
     "commercial_risk": "medium"
+  },
+  {
+    "slug": "vetronaviglio-tracking-mvp",
+    "name": "Vetronaviglio Tracking MVP",
+    "phase": "Esecuzione (live)",
+    "state": "active",
+    "last_commit": "50ac340",
+    "last_commit_relative": "oggi",
+    "next_action": "Configurare DHL API key su Vercel per abilitare secondo carrier",
+    "revenue_eur": 10200,
+    "costs_eur": 0,
+    "margin_eur": 10200,
+    "invoice_count": 1,
+    "ledger_status": "operativo",
+    "commercial_risk": "low"
   }
 ]
