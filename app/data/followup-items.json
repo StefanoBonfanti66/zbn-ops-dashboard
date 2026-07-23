@@ -126,7 +126,7 @@
   {
     "id": "vetronaviglio-cartiglio-automation-feedback",
     "project_slug": "vetronaviglio-cartiglio-automation",
-    "title": "Attendere feedback visivo del cliente (ufficio qualità) sul PDF generato in `output/test-footer.pdf`",
+    "title": "Attendere nuovi file Excel per generare altri cartigli",
     "status": "pending",
     "phase": "Esecuzione",
     "type": "blocco",
@@ -134,7 +134,7 @@
     "owner": "stefano",
     "priority": "high",
     "waiting_on": "Cliente",
-    "next_action": "Attendere feedback visivo del cliente (ufficio qualità) sul PDF generato in `output/test-footer.pdf`",
+    "next_action": "Attendere nuovi file Excel per generare altri cartigli",
     "due_date": null,
     "snooze_until": null,
     "next_review_at": "2026-07-14",
@@ -145,7 +145,7 @@
       "feedback",
       "automazione"
     ],
-    "last_touch_at": "2026-07-10T14:47:56.564Z",
+    "last_touch_at": "2026-07-23T04:15:48.167Z",
     "source_path": null
   },
   {
