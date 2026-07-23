@@ -27,7 +27,7 @@
   {
     "id": "magie-su-excel-delivery",
     "project_slug": "magie-su-excel",
-    "title": "Usare lo script per eventuali nuovi file CSV/XLSX da Chiara o altri fornitori.",
+    "title": "Inviare a Margherita Colombo il file `docs/elenco fornitoriconemail.xlsx` e la bozza email in `docs/project/email-colombo-fornitori.md`. Attendere feedback per recuperare i contatti dei 43 fornitori mancanti.",
     "status": "urgent",
     "phase": "Da consegnare",
     "type": "delivery",
@@ -35,7 +35,7 @@
     "owner": "stefano",
     "priority": "high",
     "waiting_on": null,
-    "next_action": "Usare lo script per eventuali nuovi file CSV/XLSX da Chiara o altri fornitori.",
+    "next_action": "Inviare a Margherita Colombo il file `docs/elenco fornitoriconemail.xlsx` e la bozza email in `docs/project/email-colombo-fornitori.md`. Attendere feedback per recuperare i contatti dei 43 fornitori mancanti.",
     "due_date": "2026-07-04",
     "snooze_until": null,
     "next_review_at": "2026-07-10",
@@ -45,13 +45,13 @@
       "delivery",
       "cliente"
     ],
-    "last_touch_at": "2026-07-10T14:49:59.304Z",
+    "last_touch_at": "2026-07-10T14:47:56.564Z",
     "source_path": null
   },
   {
     "id": "zetabytenexus-website-positioning",
     "project_slug": "zetabytenexus-website",
-    "title": "Produrre `docs/leads/zetabytenexus-website-positioning.md` con @marketing, poi `pricing.md` con @pricing",
+    "title": "Definire posizionamento e offerta servizi — creare brief in `docs/leads/` con @marketing",
     "status": "pending",
     "phase": "Live",
     "type": "strategy",
@@ -59,7 +59,7 @@
     "owner": "stefano",
     "priority": "high",
     "waiting_on": null,
-    "next_action": "Produrre `docs/leads/zetabytenexus-website-positioning.md` con @marketing, poi `pricing.md` con @pricing",
+    "next_action": "Definire posizionamento e offerta servizi — creare brief in `docs/leads/` con @marketing",
     "due_date": null,
     "snooze_until": null,
     "next_review_at": "2026-07-17",
@@ -71,7 +71,7 @@
       "marketing",
       "leads"
     ],
-    "last_touch_at": "2026-07-21T04:15:44.299Z",
+    "last_touch_at": "2026-07-10T14:47:56.564Z",
     "source_path": null
   },
   {
@@ -145,7 +145,7 @@
       "feedback",
       "automazione"
     ],
-    "last_touch_at": "2026-07-23T04:15:48.167Z",
+    "last_touch_at": "2026-07-23T13:01:34.927Z",
     "source_path": null
   },
   {
@@ -169,7 +169,7 @@
       "manutenzione",
       "cron"
     ],
-    "last_touch_at": "2026-07-10T14:54:35.125Z",
+    "last_touch_at": "2026-07-23T13:01:34.927Z",
     "source_path": null
   }
 ]
