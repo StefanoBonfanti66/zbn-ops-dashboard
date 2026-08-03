@@ -44,17 +44,6 @@
     "opencode_command": "cd C:\\Users\\localadm\\github\\StockSyncPro-V2 && opencode"
   },
   {
-    "name": "StockSyncPro",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/StockSyncPro",
-    "local_path_guess": "C:\\Users\\localadm\\github\\StockSyncPro",
-    "project_where_command": "/project-where StockSyncPro",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\StockSyncPro && opencode"
-  },
-  {
     "name": "ai-dev-environment",
     "status": "active",
     "priority": "medium",
@@ -99,23 +88,12 @@
     "opencode_command": "cd C:\\Users\\localadm\\github\\attivita_giornaliere_project && opencode"
   },
   {
-    "name": "calendario-fitri-2026",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/calendario-fitri-2026",
-    "local_path_guess": "C:\\Users\\localadm\\github\\calendario-fitri-2026",
-    "project_where_command": "/project-where calendario-fitri-2026",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\calendario-fitri-2026 && opencode"
-  },
-  {
     "name": "creazione_documentazione",
     "status": "active",
     "priority": "medium",
     "machine": "windows-home",
     "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/creazione_documentazione",
+    "github_url": "",
     "local_path_guess": "C:\\Users\\localadm\\github\\creazione_documentazione",
     "project_where_command": "/project-where creazione_documentazione",
     "opencode_command": "cd C:\\Users\\localadm\\github\\creazione_documentazione && opencode"
@@ -148,32 +126,21 @@
     "priority": "medium",
     "machine": "windows-home",
     "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/fornitori_su_server",
+    "github_url": "",
     "local_path_guess": "C:\\Users\\localadm\\github\\fornitori_su_server",
     "project_where_command": "/project-where fornitori_su_server",
     "opencode_command": "cd C:\\Users\\localadm\\github\\fornitori_su_server && opencode"
   },
   {
-    "name": "gestione-spese-famiglia",
+    "name": "gestione_spese_famiglia",
     "status": "active",
     "priority": "high",
     "machine": "ubuntu-usb",
     "next_action": "definire categorie, ricorrenze e flusso inserimento spese",
-    "github_url": "",
-    "local_path_guess": "$HOME/Scrivania/Progetti/gestione-spese-famiglia",
-    "project_where_command": "/project-where gestione-spese-famiglia",
-    "opencode_command": "cd $HOME/Scrivania/Progetti/gestione-spese-famiglia && opencode"
-  },
-  {
-    "name": "gestione_spese_famiglia",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
     "github_url": "https://github.com/StefanoBonfanti66/gestione_spese_famiglia",
-    "local_path_guess": "C:\\Users\\localadm\\github\\gestione_spese_famiglia",
+    "local_path_guess": "/data/workspace/Progetti/gestione_spese_famiglia",
     "project_where_command": "/project-where gestione_spese_famiglia",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\gestione_spese_famiglia && opencode",
+    "opencode_command": "cd /data/workspace/Progetti/gestione_spese_famiglia && opencode",
     "_phase": "Manutenzione",
     "_state": "active",
     "_commercial_risk": "medium",
@@ -182,23 +149,12 @@
     "_ledger_status": "template-only"
   },
   {
-    "name": "gestione_turni_2",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/gestione_turni_2",
-    "local_path_guess": "C:\\Users\\localadm\\github\\gestione_turni_2",
-    "project_where_command": "/project-where gestione_turni_2",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\gestione_turni_2 && opencode"
-  },
-  {
     "name": "github.io",
     "status": "active",
     "priority": "medium",
     "machine": "windows-home",
     "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/github.io",
+    "github_url": "",
     "local_path_guess": "C:\\Users\\localadm\\github\\github.io",
     "project_where_command": "/project-where github.io",
     "opencode_command": "cd C:\\Users\\localadm\\github\\github.io && opencode"
@@ -220,21 +176,10 @@
     "priority": "medium",
     "machine": "windows-home",
     "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/magazzino-articoli-smistamento",
+    "github_url": "",
     "local_path_guess": "C:\\Users\\localadm\\github\\magazzino-articoli-smistamento",
     "project_where_command": "/project-where magazzino-articoli-smistamento",
     "opencode_command": "cd C:\\Users\\localadm\\github\\magazzino-articoli-smistamento && opencode"
-  },
-  {
-    "name": "next-supabase-message-board-stefano",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/next-supabase-message-board-stefano",
-    "local_path_guess": "C:\\Users\\localadm\\github\\next-supabase-message-board-stefano",
-    "project_where_command": "/project-where next-supabase-message-board-stefano",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\next-supabase-message-board-stefano && opencode"
   },
   {
     "name": "opencode-config",
@@ -248,17 +193,6 @@
     "opencode_command": "cd C:\\Users\\localadm\\github\\opencode-config && opencode"
   },
   {
-    "name": "pianificatore_turni",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/pianificatore_turni",
-    "local_path_guess": "C:\\Users\\localadm\\github\\pianificatore_turni",
-    "project_where_command": "/project-where pianificatore_turni",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\pianificatore_turni && opencode"
-  },
-  {
     "name": "procoach",
     "status": "active",
     "priority": "medium",
@@ -268,39 +202,6 @@
     "local_path_guess": "C:\\Users\\localadm\\github\\procoach",
     "project_where_command": "/project-where procoach",
     "opencode_command": "cd C:\\Users\\localadm\\github\\procoach && opencode"
-  },
-  {
-    "name": "quix_import_articoli",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/quix_import_articoli",
-    "local_path_guess": "C:\\Users\\localadm\\github\\quix_import_articoli",
-    "project_where_command": "/project-where quix_import_articoli",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\quix_import_articoli && opencode"
-  },
-  {
-    "name": "support-tickets",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/support-tickets",
-    "local_path_guess": "C:\\Users\\localadm\\github\\support-tickets",
-    "project_where_command": "/project-where support-tickets",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\support-tickets && opencode"
-  },
-  {
-    "name": "test-2",
-    "status": "active",
-    "priority": "medium",
-    "machine": "windows-home",
-    "next_action": "classificare progetto e definire prossimo passo",
-    "github_url": "https://github.com/StefanoBonfanti66/test-2",
-    "local_path_guess": "C:\\Users\\localadm\\github\\test-2",
-    "project_where_command": "/project-where test-2",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\test-2 && opencode"
   },
   {
     "name": "triathlon-planner-saas",
