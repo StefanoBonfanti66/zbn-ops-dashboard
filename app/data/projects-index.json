@@ -118,5 +118,20 @@
     "invoice_count": 1,
     "ledger_status": "operativo",
     "commercial_risk": "low"
+  },
+  {
+    "slug": "vetronaviglio-listini-webapp",
+    "name": "Vetronaviglio Listini Webapp",
+    "phase": "Da avviare",
+    "state": "pending",
+    "last_commit": "",
+    "last_commit_relative": "",
+    "next_action": "Progetto appena creato — completare bootstrap e definire prossimo passo",
+    "revenue_eur": null,
+    "costs_eur": null,
+    "margin_eur": null,
+    "invoice_count": 0,
+    "ledger_status": "template-only",
+    "commercial_risk": "medium"
   }
 ]
