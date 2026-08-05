@@ -142,5 +142,21 @@
     "ledger_status": "template-only",
     "commercial_risk": "medium",
     "priority": "high"
+  },
+  {
+    "slug": "triathlon-planner-saas",
+    "name": "Triathlon Planner SaaS",
+    "phase": "Manutenzione",
+    "state": "active",
+    "last_commit": "f88273f",
+    "last_commit_relative": "oggi",
+    "next_action": "Promuovere gratuitamente la app alle società di triathlon italiane.",
+    "revenue_eur": null,
+    "costs_eur": null,
+    "margin_eur": null,
+    "invoice_count": 0,
+    "ledger_status": "template-only",
+    "commercial_risk": "medium",
+    "priority": "medium"
   }
 ]
