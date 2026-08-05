@@ -108,7 +108,12 @@ function buildProjectList(projectsIndex, allProjects) {
       };
     }
   }
-  return Object.values(map);
+  const priorityRank = { high: 0, medium: 1, low: 2 };
+  return Object.values(map).sort((a, b) => {
+    const ra = priorityRank[a.priority] ?? 9;
+    const rb = priorityRank[b.priority] ?? 9;
+    return ra - rb || (a.name || a.slug).localeCompare(b.name || b.slug);
+  });
 }
 
 function renderProjects(projects) {
