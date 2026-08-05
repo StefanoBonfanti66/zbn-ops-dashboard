@@ -4,8 +4,20 @@ async function loadJson(path) {
   return res.json();
 }
 
-function badge(status) {
-  return `<span class="badge ${status}">${status}</span>`;
+function badge(status, text) {
+  return `<span class="badge ${status}">${text || status}</span>`;
+}
+
+function stateLabel(state) {
+  const labels = {
+    active: "ATTIVO",
+    blocked: "BLOCCATO",
+    pending: "DA AVVIARE",
+    closed: "CHIUSO",
+    archived: "ARCHIVIATO",
+    unknown: "SCONOSCIUTO",
+  };
+  return labels[state] || state;
 }
 
 function normalizeName(name) {
@@ -125,7 +137,7 @@ function renderProjects(projects) {
   tbody.innerHTML = projects.map((p) => `
     <tr>
       <td><strong>${p.name || p.slug}</strong>${p._matched ? "" : ` <span class="muted">(non ZBN)</span>`}</td>
-      <td>${badge(p.state || "unknown")}</td>
+      <td>${badge(p.state || "unknown", stateLabel(p.state))}</td>
       <td>${p.priority ? badge(p.priority) : "-"}</td>
       <td>${p.phase || "-"}</td>
       <td>${p.next_action || "-"}</td>
