@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-05T10:23:11.576Z",
+  "generated_at": "2026-08-05T10:28:02.482Z",
   "projects_active": 6,
   "projects_closed": 0,
-  "projects_unclassified": 12,
+  "projects_unclassified": 11,
   "followup_urgent": 1,
   "followup_pending": 5,
   "followup_snooze": 1,
   "commercial_flags_high": 5,
-  "commercial_flags_medium": 2,
+  "commercial_flags_medium": 3,
   "revenue_total_eur": 10200,
   "invoices_total": 1,
-  "ledger_template_only_count": 7
+  "ledger_template_only_count": 8
 }
