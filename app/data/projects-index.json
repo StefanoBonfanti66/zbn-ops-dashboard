@@ -12,7 +12,8 @@
     "margin_eur": 0,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "high"
+    "commercial_risk": "high",
+    "priority": "medium"
   },
   {
     "slug": "vetronaviglio-report-visite",
@@ -27,7 +28,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "high"
+    "commercial_risk": "high",
+    "priority": "medium"
   },
   {
     "slug": "vetronaviglio-cartiglio-automation",
@@ -42,7 +44,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "high"
+    "commercial_risk": "high",
+    "priority": "medium"
   },
   {
     "slug": "magie-su-excel",
@@ -57,7 +60,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "high"
+    "commercial_risk": "high",
+    "priority": "medium"
   },
   {
     "slug": "zetabytenexus-website",
@@ -72,7 +76,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "high"
+    "commercial_risk": "high",
+    "priority": "medium"
   },
   {
     "slug": "analisi-bollette",
@@ -87,7 +92,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "medium"
+    "commercial_risk": "medium",
+    "priority": "medium"
   },
   {
     "slug": "gestione_spese_famiglia",
@@ -102,7 +108,8 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "medium"
+    "commercial_risk": "medium",
+    "priority": "medium"
   },
   {
     "slug": "vetronaviglio-tracking-mvp",
@@ -117,7 +124,8 @@
     "margin_eur": 10200,
     "invoice_count": 1,
     "ledger_status": "operativo",
-    "commercial_risk": "low"
+    "commercial_risk": "low",
+    "priority": "medium"
   },
   {
     "slug": "vetronaviglio-listini-webapp",
@@ -132,6 +140,7 @@
     "margin_eur": null,
     "invoice_count": 0,
     "ledger_status": "template-only",
-    "commercial_risk": "medium"
+    "commercial_risk": "medium",
+    "priority": "high"
   }
 ]

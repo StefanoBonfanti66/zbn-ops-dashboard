@@ -25,7 +25,8 @@
     "margin_eur": { "type": ["number", "null"] },
     "invoice_count": { "type": "integer", "minimum": 0 },
     "ledger_status": { "type": "string", "enum": ["template-only", "partial", "updated", "missing"] },
-    "commercial_risk": { "type": "string", "enum": ["high", "medium", "low", "none"] }
+    "commercial_risk": { "type": "string", "enum": ["high", "medium", "low", "none"] },
+    "priority": { "type": "string", "enum": ["high", "medium", "low"] }
   },
   "additionalProperties": false
 }
