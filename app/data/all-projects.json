@@ -212,7 +212,13 @@
     "github_url": "https://github.com/StefanoBonfanti66/triathlon-planner-saas",
     "local_path_guess": "C:\\Users\\localadm\\github\\triathlon-planner-saas",
     "project_where_command": "/project-where triathlon-planner-saas",
-    "opencode_command": "cd C:\\Users\\localadm\\github\\triathlon-planner-saas && opencode"
+    "opencode_command": "cd C:\\Users\\localadm\\github\\triathlon-planner-saas && opencode",
+    "_phase": "Manutenzione",
+    "_state": "active",
+    "_commercial_risk": "medium",
+    "_revenue_eur": null,
+    "_invoice_count": 0,
+    "_ledger_status": "template-only"
   },
   {
     "name": "triathlon-starter",
