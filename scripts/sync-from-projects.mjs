@@ -65,6 +65,8 @@ for (const ap of allProjects) {
     ap._revenue_eur = match.revenue_eur;
     ap._invoice_count = match.invoice_count;
     ap._ledger_status = match.ledger_status;
+    if (match.overview_note) ap.overview_note = match.overview_note;
+    if (match.docs_path) ap.docs_path = match.docs_path;
     mergedCount++;
   }
 }

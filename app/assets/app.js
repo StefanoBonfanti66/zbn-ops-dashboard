@@ -75,6 +75,12 @@ function createProjectActions(p) {
   if (p.github_url) {
     buttons.push(`<a href="${p.github_url}" target="_blank" rel="noopener">GitHub</a>`);
   }
+  if (p.overview_note) {
+    buttons.push(`<button data-copy="${p.overview_note}">Copy overview</button>`);
+  }
+  if (p.docs_path) {
+    buttons.push(`<button data-copy="${p.docs_path}">Copy docs</button>`);
+  }
   if (p.local_path_guess) {
     buttons.push(`<button data-copy="cd ${p.local_path_guess}">Copy cd</button>`);
   }
@@ -113,6 +119,8 @@ function buildProjectList(projectsIndex, allProjects) {
         machine: p.machine || "-",
         github_url: p.github_url || "",
         local_path_guess: p.local_path_guess || "",
+        overview_note: p.overview_note || "",
+        docs_path: p.docs_path || "",
         opencode_command: p.opencode_command || "",
         project_where_command: p.project_where_command || "",
         _source: "all",

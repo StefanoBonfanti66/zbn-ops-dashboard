@@ -26,7 +26,9 @@
     "invoice_count": { "type": "integer", "minimum": 0 },
     "ledger_status": { "type": "string", "enum": ["template-only", "partial", "updated", "missing"] },
     "commercial_risk": { "type": "string", "enum": ["high", "medium", "low", "none"] },
-    "priority": { "type": "string", "enum": ["high", "medium", "low"] }
+    "priority": { "type": "string", "enum": ["high", "medium", "low"] },
+    "overview_note": { "type": ["string", "null"] },
+    "docs_path": { "type": ["string", "null"] }
   },
   "additionalProperties": false
 }

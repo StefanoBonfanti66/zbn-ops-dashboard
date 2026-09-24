@@ -218,7 +218,9 @@
     "_commercial_risk": "medium",
     "_revenue_eur": null,
     "_invoice_count": 0,
-    "_ledger_status": "template-only"
+    "_ledger_status": "template-only",
+    "overview_note": "../opencode-config/docs/obsidian/Progetto Triathlon Planner SaaS – Overview.md",
+    "docs_path": "/data/workspace/Progetti/triathlon-planner-saas/docs"
   },
   {
     "name": "triathlon-starter",
