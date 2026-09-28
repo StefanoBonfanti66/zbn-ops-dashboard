@@ -189,7 +189,7 @@
     "state": "pending",
     "last_commit": "9f9656b",
     "last_commit_relative": "29 secondi fa",
-    "next_action": "Attendere riscontro Agis Lab; in parallelo preparare la Fase 0/1 (mappatura processi e credenziali) in attesa della conferma di avvio.",
+    "next_action": "Concordare con Alessandro/Viviano la mail di test e poi, dal PC Ubuntu, eseguire la diagnosi: `Install-Module ExchangeOnlineManagement -Scope CurrentUser` → `Connect-ExchangeOnline -UserPrincipalName s.bonfanti@vetronaviglio.it -Device` → `pwsh -NoProfile -File app/email-diagnostics/checkcasobettina.ps1 -Da <data> -A <data>`, leggendo prima la sezione «confronto» fra le due caselle. Separatamente: sollecitare la quotazione per la nuova banda a Cartel/VODAMAX e attivare la raccolta automatica delle specifiche (share + GPO).",
     "revenue_eur": null,
     "costs_eur": null,
     "margin_eur": null,
