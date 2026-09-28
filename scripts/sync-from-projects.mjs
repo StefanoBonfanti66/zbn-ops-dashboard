@@ -73,34 +73,40 @@ for (const ap of allProjects) {
 writeJson(DATA.allProjects, allProjects);
 changelog.push(`all-projects.json: ${allProjects.length} progetti, ${mergedCount} arricchiti da projects-index`);
 
-// Step 3: sync followup-items.json with projects-index.json
+// Step 3: fill empty fields of followup-items.json from projects-index.json.
+// Ownership rule: next_action / title / phase are curated by the /followup command
+// and are filled from projects-index.json ONLY when still empty. All the other
+// fields (status, type, blocking, waiting_on, priority, next_review_at,
+// snooze_until, due_date, notes, notes_short, tags) belong to /followup and are
+// never touched here. last_touch_at is refreshed only when this fill actually
+// changes something.
 const projectBySlugFollowup = {};
 for (const p of projects) {
   projectBySlugFollowup[p.slug] = p;
 }
 
-let followupUpdatedCount = 0;
+let followupFilledCount = 0;
 for (const f of followups) {
   const match = projectBySlugFollowup[f.project_slug];
   if (!match) continue;
   let changed = false;
-  if (match.next_action && match.next_action !== f.next_action) {
+  if (match.next_action && !f.next_action) {
     f.next_action = match.next_action;
-    f.title = match.next_action;
+    if (!f.title) f.title = match.next_action;
     changed = true;
   }
-  if (match.phase && match.phase !== f.phase) {
+  if (match.phase && !f.phase) {
     f.phase = match.phase;
     changed = true;
   }
   if (changed) {
     f.last_touch_at = new Date().toISOString();
-    followupUpdatedCount++;
+    followupFilledCount++;
   }
 }
-if (followupUpdatedCount > 0) {
+if (followupFilledCount > 0) {
   writeJson(DATA.followups, followups);
-  changelog.push(`followup-items.json: ${followupUpdatedCount} item aggiornati da projects-index`);
+  changelog.push(`followup-items.json: ${followupFilledCount} item compilati da projects-index (fill-in campi vuoti)`);
 }
 
 // Step 4: regenerate summary
