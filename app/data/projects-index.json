@@ -189,7 +189,7 @@
     "state": "pending",
     "last_commit": "e19a75c",
     "last_commit_relative": "20 ore fa",
-    "next_action": "1) Sicurezza, prima di qualunque push: ruotare la chiave API Render `rndWgN1…` committata in `opencode.json`, e riportare `opencode.json` in working tree alla versione committata (è un override di macchina: non va committata).",
+    "next_action": "1) SYSVOL: riprendere il mount col fallback a ccache su file (il tentativo col keyring è fallito con `mount error(126) Required key notavailable`, cioè `cifs.upcall` non ha trovato il ticket nel keyring della sessione). Da terminale GNOME reale: `KRB5CCNAME=FILE:/tmp/krb5ccsb kinit s.bonfanti@VETRODOM.LOCAL` e poi `sudo KRB5CCNAME=FILE:/tmp/krb5ccsb mount -t cifs //dc01-vn.vetrodom.local/SYSVOL /mnt/vetrodom-sysvol -o sec=krb5,vers=3.0,uid=1000,gid=1000,netdev,nofail` (sudo scarta `KRB5CCNAME` dagli env: se serve, usare `sudo --preserve-env=KRB5CCNAME`). Obiettivo: leggere `Vetrodom.local\\scripts\\hardware-inventory\\collecthardware.ps1` — la versione deployata dalla GPO — e riallineare `app/laninventory/collecthardware.ps1` (untracked, md5 `d842308400f49ec999263f7a37e0d626`, 8647 B), che è divergente: ha `freegb`/`label` e NON ha `interfacetype`, quindi non è la versione che ha prodotto i JSON. Se il kernel client resta ostile: copia di SYSVOL fatta da un PC Windows, oppure `/etc/samba/secrets.tdb` via `net ads`.",
     "revenue_eur": null,
     "costs_eur": null,
     "margin_eur": null,
