@@ -189,7 +189,7 @@
     "state": "pending",
     "last_commit": "e19a75c",
     "last_commit_relative": "10 giorni fa",
-    "next_action": "1) Inviare la risposta a Viviano (08/10) — la bozza è pronta in `docs/leads/email-viviano-riscontro-censimento.md`: rileggerla, correggere i numeri se non combaciano, inviare a mano e registrare l'invio in `docs/changelog.md` + `docs/leads/index.md`. Nessun invio automatico. Prerequisito Bitwarden rimosso il 09/10 (canale = WeTransfer protetto + password telefonica). Se il contenuto riguarda la mail di prova al caso A, si accasella nel punto 2.",
+    "next_action": "1) Inviare la risposta a Viviano (08/10) — la bozza è pronta in `docs/leads/email-viviano-riscontro-censimento.md`: rileggerla, applicare le 3 correzioni obbligatorie (voce in «Da fare», verificate in Fase 2), inviare a mano e registrare l'invio in `docs/changelog.md` + `docs/leads/index.md`. Nessun invio automatico. Prerequisito Bitwarden rimosso il 09/10 (canale = WeTransfer protetto + password telefonica). Se il contenuto riguarda la mail di prova al caso A, si accasella nel punto 2.",
     "revenue_eur": null,
     "costs_eur": null,
     "margin_eur": null,
