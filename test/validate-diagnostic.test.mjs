@@ -319,12 +319,43 @@ test('nessuna scrittura sui file esaminati', (t) => {
   } finally { f.cleanup(); }
 });
 
-test('schemi reali: rileva state=pending fuori enum su progetti reali', (t) => {
-  const r = runDiagnostic(
-    join(process.cwd(), 'schema'),
-    join(process.cwd(), 'app/data')
+test('state=pending fuori enum rilevato da diagnostico su fixture sintetica', (t) => {
+  const realSchema = readFileSync(
+    join(process.cwd(), 'schema', 'projects-index.schema.json'),
+    'utf8'
   );
-  equal(r.code, 1);
-  ok(r.stdout.includes('projects-index.json'));
-  ok(r.stdout.includes('/state'));
+  const f = makeFixture(
+    { 'projects-index.schema.json': realSchema },
+    {
+      'projects-index.json': JSON.stringify([
+        { slug: 'a', name: 'A', phase: 'Avvio', state: 'pending', next_action: 'x', invoice_count: 0, ledger_status: 'template-only', commercial_risk: 'low' },
+        { slug: 'b', name: 'B', phase: 'Esecuzione', state: 'active', next_action: 'y', invoice_count: 0, ledger_status: 'template-only', commercial_risk: 'low' },
+      ])
+    }
+  );
+  try {
+    const r = runDiagnostic(f.schemaDir, f.dataDir);
+    equal(r.code, 1);
+    ok(r.stdout.includes('projects-index.json'));
+    ok(r.stdout.includes('/state'));
+  } finally { f.cleanup(); }
+});
+
+test('state=active passa il diagnostico su fixture sintetica', (t) => {
+  const realSchema = readFileSync(
+    join(process.cwd(), 'schema', 'projects-index.schema.json'),
+    'utf8'
+  );
+  const f = makeFixture(
+    { 'projects-index.schema.json': realSchema },
+    {
+      'projects-index.json': JSON.stringify([
+        { slug: 'a', name: 'A', phase: 'Esecuzione', state: 'active', next_action: 'x', invoice_count: 0, ledger_status: 'template-only', commercial_risk: 'low' },
+      ])
+    }
+  );
+  try {
+    const r = runDiagnostic(f.schemaDir, f.dataDir);
+    equal(r.code, 0);
+  } finally { f.cleanup(); }
 });
