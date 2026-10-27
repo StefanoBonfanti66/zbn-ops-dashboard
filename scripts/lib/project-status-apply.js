@@ -14,6 +14,10 @@ export function applyProjectStatusToEntry(entry, acquisitionResult, mode) {
       entry.next_action = r.next_action;
       changed.push("next_action");
     }
+    if ("is_test" in r && r.is_test !== entry.is_test) {
+      entry.is_test = r.is_test;
+      changed.push("is_test");
+    }
     return { applied: "primary", changed };
   }
   if (acquisitionResult.status === "invalid") {

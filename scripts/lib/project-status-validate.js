@@ -93,5 +93,9 @@ export function validateProjectStatusRecord(j) {
     errors.push("next_action deve essere stringa");
   }
 
+  if ("is_test" in j && typeof j.is_test !== "boolean") {
+    errors.push("is_test deve essere boolean");
+  }
+
   return { valid: errors.length === 0, errors };
 }

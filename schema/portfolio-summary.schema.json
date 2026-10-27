@@ -28,7 +28,8 @@
     "commercial_flags_medium": { "type": "integer", "minimum": 0 },
     "revenue_total_eur": { "type": "number" },
     "invoices_total": { "type": "integer", "minimum": 0 },
-    "ledger_template_only_count": { "type": "integer", "minimum": 0 }
+    "ledger_template_only_count": { "type": "integer", "minimum": 0 },
+    "projects_test_count": { "type": "integer", "minimum": 0 }
   },
   "additionalProperties": false
 }

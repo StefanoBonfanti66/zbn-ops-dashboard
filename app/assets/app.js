@@ -144,7 +144,7 @@ function renderProjects(projects) {
   }
   tbody.innerHTML = projects.map((p) => `
     <tr>
-      <td><strong>${p.name || p.slug}</strong>${p._matched ? "" : ` <span class="muted">(non ZBN)</span>`}</td>
+      <td><strong>${p.name || p.slug}</strong>${p._matched ? "" : ` <span class="muted">(non ZBN)</span>`}${p.is_test === true ? ' <span class="badge test">Test</span>' : ''}</td>
       <td>${badge(p.state || "unknown", stateLabel(p.state))}</td>
       <td>${p.priority ? badge(p.priority) : "-"}</td>
       <td>${p.phase || "-"}</td>

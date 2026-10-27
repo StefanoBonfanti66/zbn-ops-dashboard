@@ -46,9 +46,6 @@ assert.strictEqual(entry.state, "oldstate");
 assert.strictEqual(entry.phase, "oldphase");
 console.log("PASS: integration ci absent confirmed via directory listing");
 
-import assert from "node:assert";
-import { createGitHubAcquirer } from "../lib/project-status-acquire.js";
-
 // directory check fails -> unreadable
 {
   let call = 0;

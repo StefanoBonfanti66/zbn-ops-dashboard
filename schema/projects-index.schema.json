@@ -28,7 +28,8 @@
     "commercial_risk": { "type": "string", "enum": ["high", "medium", "low", "none"] },
     "priority": { "type": "string", "enum": ["high", "medium", "low"] },
     "overview_note": { "type": ["string", "null"] },
-    "docs_path": { "type": ["string", "null"] }
+    "docs_path": { "type": ["string", "null"] },
+    "is_test": { "type": "boolean" }
   },
   "additionalProperties": false
 }
