@@ -125,7 +125,7 @@
     "costs_eur": 0,
     "margin_eur": 10200,
     "invoice_count": 1,
-    "ledger_status": "operativo",
+    "ledger_status": "partial",
     "commercial_risk": "low",
     "priority": "medium",
     "overview_note": "../opencode-config/docs/obsidian/Progetto vetronaviglio-tracking-mvp – Overview.md",
