@@ -5,5 +5,9 @@
   "description": "ZBN Ops Dashboard — follow-up, portfolio, flag commerciali e catalogo progetti",
   "dependencies": {
     "serve": "^14.2.6"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
   }
 }
