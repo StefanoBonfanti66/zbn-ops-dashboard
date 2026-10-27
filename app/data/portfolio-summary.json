@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T10:31:42.402Z",
+  "generated_at": "2026-10-27T13:40:42.938Z",
   "projects_active": 8,
   "projects_closed": 0,
   "projects_unclassified": 8,
@@ -8,7 +8,8 @@
   "followup_snooze": 1,
   "commercial_flags_high": 5,
   "commercial_flags_medium": 6,
-  "revenue_total_eur": 10200,
-  "invoices_total": 1,
+  "projects_test_count": 1,
+  "revenue_total_eur": 0,
+  "invoices_total": 0,
   "ledger_template_only_count": 11
 }

@@ -116,11 +116,11 @@
   {
     "slug": "vetronaviglio-tracking-mvp",
     "name": "Vetronaviglio Tracking MVP",
-    "phase": "Esecuzione (live)",
-    "state": "active",
-    "last_commit": "a489ca4",
-    "last_commit_relative": "18 ore fa",
-    "next_action": "1. Bottone \"Sync DHL\" in dashboard — oggi solo FedEx ha il Sync button; valutare con utente se serve anche per DHL",
+    "phase": "Demo conservata",
+    "state": "unknown",
+    "last_commit": "6cdacd7",
+    "last_commit_relative": "8 minuti fa",
+    "next_action": "Nessuna attività pianificata",
     "revenue_eur": 10200,
     "costs_eur": 0,
     "margin_eur": 10200,
@@ -129,7 +129,8 @@
     "commercial_risk": "low",
     "priority": "medium",
     "overview_note": "../opencode-config/docs/obsidian/Progetto vetronaviglio-tracking-mvp – Overview.md",
-    "docs_path": "/data/workspace/Progetti/vetronaviglio-tracking-mvp/docs"
+    "docs_path": "/data/workspace/Progetti/vetronaviglio-tracking-mvp/docs",
+    "is_test": true
   },
   {
     "slug": "vetronaviglio-listini-webapp",
@@ -185,11 +186,11 @@
   {
     "slug": "agis-lab",
     "name": "Agis Lab",
-    "phase": "Da avviare",
-    "state": "pending",
-    "last_commit": "a29795f",
-    "last_commit_relative": "16 ore fa",
-    "next_action": "1) Inviare la risposta a Viviano — testo canonico revisionato da Stefano il 13/10 in `docs/leads/email-viviano-riscontro-censimento.md`; bozza Gmail `r4308153319261737619` con i 3 allegati XLSX (scartare `r8056852964389109805`). Prima dell'invio: (a) 4 correzioni di rilettura (vedi Note operative del file: spazio «risultano sulla», trattini punto 2, frase impianto elettrico da validare, «matrice licenze»); (b) confermare se «Prossimo passo» (call + modulo standard) resta eliminato; (c) mittente `s.bonfanti@vetronaviglio.it`. Dopo l'invio: data in `docs/leads/index.md` + changelog. Nessun invio automatico. Seconda bozza pronta e indipendente: `docs/leads/risposta-viviano-software-postazioni.md`, da inviare a mano quando si ritiene opportuno.",
+    "phase": "Confronto con il partner",
+    "state": "active",
+    "last_commit": "0179529",
+    "last_commit_relative": "2 ore fa",
+    "next_action": "Svolgere l'incontro e registrare decisioni e prossime attività.",
     "revenue_eur": null,
     "costs_eur": null,
     "margin_eur": null,
