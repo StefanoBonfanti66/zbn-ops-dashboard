@@ -2,6 +2,9 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createGitHubAcquirer } from "./lib/project-status-acquire.js";
+import { applyProjectStatusToEntry } from "./lib/project-status-apply.js";
+import { parseCurrentFocusLegacy } from "./lib/project-status-parse-legacy.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -25,35 +28,40 @@ function gh(args) {
     const env = { ...process.env };
     return execSync(cmd, { encoding: "utf8", env, maxBuffer: 1024 * 1024 }).trim();
   } catch (err) {
+    const stderr = err.stderr ? err.stderr.toString() : "";
+    const stdout = err.stdout ? err.stdout.toString() : "";
+    const msg = (stderr || stdout || err.message || "").toLowerCase();
     console.warn(`  gh failed: ${cmd} — ${err.message}`);
-    return null;
+    // Restituisce oggetto strutturato per permettere distinzione
+    return { __gh_error: true, message: msg, raw: stderr || stdout || err.message };
   }
 }
 
+const acquireFromGitHub = createGitHubAcquirer(gh);
+
 function parseAgentsMd(content) {
-  const result = { next_action: null, last_focus_date: null, has_bloccato: false };
-  const lines = content.replace(/[*#_]+/g, "").split("\n");
+  return { next_action: null, last_focus_date: null, has_bloccato: false };
+}
 
-  for (let i = 0; i < lines.length; i++) {
-    if (/Prossimo step/.test(lines[i])) {
-      for (let j = i + 1; j < lines.length; j++) {
-        const next = lines[j].trim();
-        if (next) {
-          result.next_action = next.replace(/^[-*]\s*/, "").trim();
-          break;
-        }
-      }
-      break;
-    }
+let repoRefCache = {};
+
+function getRepoRef(repoName) {
+  if (repoRefCache[repoName]) return repoRefCache[repoName];
+  const fullName = `StefanoBonfanti66/${repoName}`;
+  const raw = gh(`api repos/${fullName}/commits?per_page=1`);
+  if (raw === null || (typeof raw === "object" && raw.__gh_error)) {
+    repoRefCache[repoName] = null;
+    return null;
   }
-
-  if (/\bBloccato\b/i.test(content)) result.has_bloccato = true;
-
-  const m = content.match(/Current Focus[—–\-() ]*(\d{4}[-/]\d{2}[-/]\d{2})/i)
-    || content.match(/Current Focus[—–\-() ]*(\d{2}[-/]\d{2}[-/]\d{4})/i);
-  if (m) result.last_focus_date = m[1];
-
-  return result;
+  try {
+    const data = JSON.parse(raw);
+    if (Array.isArray(data) && data[0] && data[0].sha) {
+      repoRefCache[repoName] = data[0].sha;
+      return repoRefCache[repoName];
+    }
+  } catch {}
+  repoRefCache[repoName] = null;
+  return null;
 }
 
 function getRepoInfo(repoName) {
@@ -80,18 +88,33 @@ function getRepoInfo(repoName) {
   return { last_commit: sha, last_commit_relative: relative };
 }
 
-function getAgentsMd(repoName) {
+function getAgentsMd(repoName, ref) {
   const fullName = `StefanoBonfanti66/${repoName}`;
-  const raw = gh(`api repos/${fullName}/contents/AGENTS.md`);
-  if (!raw) return null;
-
+  const refQuery = ref ? `?ref=${encodeURIComponent(ref)}` : "";
+  const raw = gh(`api repos/${fullName}/contents/AGENTS.md${refQuery}`);
+  if (raw === null) return { status: "error" };
+  if (typeof raw === "object" && raw.__gh_error) {
+    const msg = String(raw.message || "").toLowerCase();
+    if (msg.includes("not found") || msg.includes("404")) return { status: "absent" };
+    if (msg.includes("forbidden") || msg.includes("unauthorized") || msg.includes("401") || msg.includes("403")) {
+      return { status: "api_error", message: raw.message, reason: "auth_forbidden" };
+    }
+    return { status: "api_error", message: raw.message };
+  }
   try {
     const data = JSON.parse(raw);
-    if (data.content) {
-      return Buffer.from(data.content, "base64").toString("utf8");
+    if (data.message) {
+      const msg = String(data.message).toLowerCase();
+      if (msg.includes("not found")) return { status: "absent" };
+      if (msg.includes("forbidden") || msg.includes("unauthorized")) return { status: "api_error", message: data.message, reason: "auth_forbidden" };
+      return { status: "api_error", message: data.message };
     }
-  } catch {
-    return null;
+    if (data.content) {
+      return { status: "ok", content: Buffer.from(data.content, "base64").toString("utf8") };
+    }
+    return { status: "api_error", message: "no content" };
+  } catch (e) {
+    return { status: "api_error", message: e.message };
   }
 }
 
@@ -135,19 +158,40 @@ for (const entry of projects) {
     entry.last_commit_relative = info.last_commit_relative;
   }
 
-  const agentsContent = getAgentsMd(repoName);
-  if (agentsContent) {
-    const parsed = parseAgentsMd(agentsContent);
-    if (parsed.next_action) {
-      if (entry.next_action !== parsed.next_action) {
-        changelog.push(`${entry.slug}: next_action "${entry.next_action}" → "${parsed.next_action}"`);
-        entry.next_action = parsed.next_action;
-      }
+  // Fonte primaria via API (indipendente da AGENTS.md) con stesso ref
+  const ref = getRepoRef(repoName);
+  const acqPrim = await acquireFromGitHub(repoName, ref);
+  const appPrim = applyProjectStatusToEntry(entry, acqPrim, "ci");
+  if (appPrim.applied === "primary") {
+    changelog.push(`${entry.slug}: aggiornato da docs/project/project-status.json (API) (${(appPrim.changed || []).join(",")})`);
+  } else if (appPrim.applied === "preserved") {
+    if (appPrim.reason === "primary_invalid") {
+      console.warn(`[gh-discover-repos] ${entry.slug}: project-status.json (API) presente ma invalido - valori esistenti preservati`);
+      if (appPrim.errors) appPrim.errors.forEach((e) => console.warn(`  - ${e}`));
+    } else if (appPrim.reason === "primary_unreadable") {
+      console.warn(`[gh-discover-repos] ${entry.slug}: errore lettura project-status.json (API) - valori esistenti preservati`);
+    } else if (appPrim.reason === "primary_absent_unverified") {
+      console.warn(`[gh-discover-repos] ${entry.slug}: accessibilità non accertata - file non classificato come assente, valori preservati`);
     }
-    const newState = parsed.has_bloccato ? "blocked" : "active";
-    if (entry.state !== newState && (entry.state === "active" || entry.state === "blocked")) {
-      changelog.push(`${entry.slug}: stato ${entry.state} → ${newState}`);
-      entry.state = newState;
+    // assente accertato -> fallback legacy
+  } else if (appPrim.applied === "absent_ci") {
+    // Fallback legacy solo se assenza accertata di project-status.json
+    if (!ref) {
+      console.warn(`[gh-discover-repos] ${entry.slug}: ref non acquisibile - accessibilità non accertata, AGENTS.md non letto per fallback`);
+    } else {
+      const am = getAgentsMd(repoName, ref);
+      if (am.status === "ok" && am.content) {
+        const parsed = parseCurrentFocusLegacy(am.content);
+        if (parsed.ambiguous) {
+          console.warn(`[gh-discover-repos] ${entry.slug}: Current Focus ambiguo - valori esistenti preservati`);
+        } else if (parsed.next_action !== null && parsed.next_action !== entry.next_action) {
+          changelog.push(`${entry.slug}: next_action "${entry.next_action}" → "${parsed.next_action}" (fallback legacy API)`);
+          entry.next_action = parsed.next_action;
+        }
+        // NON dedurre stato da Bloccato
+      } else if (am.status === "api_error") {
+        console.warn(`[gh-discover-repos] ${entry.slug}: errore recupero AGENTS.md (API) - valori esistenti preservati`);
+      }
     }
   }
 

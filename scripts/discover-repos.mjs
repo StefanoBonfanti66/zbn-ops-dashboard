@@ -3,10 +3,15 @@ import path from "node:path";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import os from "node:os";
+import { acquireFromLocal } from "./lib/project-status-acquire.js";
+import { applyProjectStatusToEntry } from "./lib/project-status-apply.js";
+import { parseCurrentFocusLegacy } from "./lib/project-status-parse-legacy.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
-const PROJECTS_DIR = path.resolve(os.homedir(), "Scrivania", "Progetti");
+const PROJECTS_DIR = process.env.ZBN_PROJECTS_ROOT
+  ? path.resolve(process.env.ZBN_PROJECTS_ROOT)
+  : path.resolve(os.homedir(), "Scrivania", "Progetti");
 
 function readJson(absPath) {
   return JSON.parse(fs.readFileSync(absPath, "utf8"));
@@ -21,29 +26,8 @@ function normalizeName(name) {
 }
 
 function parseAgentsMd(content) {
-  const result = { next_action: null, last_focus_date: null, has_bloccato: false };
-  const lines = content.replace(/[*#_]+/g, "").split("\n");
-
-  for (let i = 0; i < lines.length; i++) {
-    if (/Prossimo step/.test(lines[i])) {
-      for (let j = i + 1; j < lines.length; j++) {
-        const next = lines[j].trim();
-        if (next) {
-          result.next_action = next.replace(/^[-*]\s*/, "").trim();
-          break;
-        }
-      }
-      break;
-    }
-  }
-
-  if (/\bBloccato\b/i.test(content)) result.has_bloccato = true;
-
-  const m = content.match(/Current Focus[—–\-() ]*(\d{4}[-/]\d{2}[-/]\d{2})/i)
-    || content.match(/Current Focus[—–\-() ]*(\d{2}[-/]\d{2}[-/]\d{4})/i);
-  if (m) result.last_focus_date = m[1];
-
-  return result;
+  // Rimosso - non più utilizzato
+  return { next_action: null, last_focus_date: null, has_bloccato: false };
 }
 
 function getGitData(repoPath) {
@@ -108,20 +92,35 @@ for (const entry of projects) {
       entry.last_commit_relative = git.last_commit_relative;
     }
   }
-
-  const agentsPath = path.resolve(repoPath, "AGENTS.md");
-  if (fs.existsSync(agentsPath)) {
-    const parsed = parseAgentsMd(fs.readFileSync(agentsPath, "utf8"));
-    if (parsed.next_action) {
-      if (entry.next_action !== parsed.next_action) {
-        changelog.push(`${entry.slug}: next_action "${entry.next_action}" → "${parsed.next_action}"`);
-        entry.next_action = parsed.next_action;
-      }
+  // Fonte primaria
+  const acq = acquireFromLocal(repoPath);
+  const app = applyProjectStatusToEntry(entry, acq, "local");
+  if (app.applied === "primary") {
+    changelog.push(`${entry.slug}: aggiornato da docs/project/project-status.json (${(app.changed || []).join(",")})`);
+  } else if (app.applied === "preserved") {
+    if (app.reason === "primary_invalid") {
+      console.warn(`[discover-repos] ${entry.slug}: project-status.json presente ma invalido - valori esistenti preservati`);
+      if (app.errors) app.errors.forEach((e) => console.warn(`  - ${e}`));
+    } else if (app.reason === "primary_unreadable") {
+      console.warn(`[discover-repos] ${entry.slug}: errore lettura project-status.json - valori esistenti preservati`);
     }
-    const newState = parsed.has_bloccato ? "blocked" : "active";
-    if (entry.state !== newState && (entry.state === "active" || entry.state === "blocked")) {
-      changelog.push(`${entry.slug}: stato ${entry.state} → ${newState}`);
-      entry.state = newState;
+  } else if (app.applied === "absent_local") {
+    // fallback legacy delimitato solo a Current Focus
+    const agentsPath = path.resolve(repoPath, "AGENTS.md");
+    try {
+      if (fs.existsSync(agentsPath)) {
+        const content = fs.readFileSync(agentsPath, "utf8");
+        const parsed = parseCurrentFocusLegacy(content);
+        if (parsed.ambiguous) {
+          console.warn(`[discover-repos] ${entry.slug}: Current Focus ambiguo - valori esistenti preservati`);
+        } else if (parsed.next_action !== null && parsed.next_action !== entry.next_action) {
+          changelog.push(`${entry.slug}: next_action "${entry.next_action}" → "${parsed.next_action}" (fallback legacy)`);
+          entry.next_action = parsed.next_action;
+        }
+        // NON dedurre stato da Bloccato
+      }
+    } catch (e) {
+      console.warn(`[discover-repos] ${entry.slug}: errore lettura AGENTS.md - valori esistenti preservati`);
     }
   }
 
