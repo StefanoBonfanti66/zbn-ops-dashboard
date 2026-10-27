@@ -6,6 +6,15 @@
 - ✅ Diagnosi "non vedo gli aggiornamenti": il meccanismo push→deploy funzionava già; il motivo era commit locali mai pushati + main locale 35 commit dietro origin/main (cron nightly). Risolto con rebase + merge manuale dei conflitti su `app/data/*` (tenuti `last_commit` aggiornati dal cron + arricchimento locale).
 - ✅ Deploy da push riattivato: era rimasto "workflow_run-only" da 2026-08-05; ora nuovo push deploy success 2026-09-24.
 
+**Completed (2026-10-27):**
+- ✅ Commit `3f5af1a` "data(dashboard): acquisisce stato AGIS ed esclude demo tracking dai KPI" — AGIS active/Confronto con il partner, tracking escluso dai KPI economici (revenue 0, invoices 0, projects_test_count 1).
+- ✅ Commit `c30c9a9` "fix(summary): calcola contatori reali e isola test diagnostico" — rimossi contatori hardcoded `projects_closed` (2) e `projects_unclassified` (15) da `generate-summary.mjs`, calcolo dinamico da `all-projects.json` + `projects-index.json`, test fixture aggiornati, test diagnostico isolato da produzione (18/18 PASS).
+- ✅ Commit `2db8643` "data(dashboard): rimuove nuovo sito Vetronaviglio e aggiorna aggregati" — rimossa entry `nuovo-sito-vetronaviglio` da `projects-index.json` (12→11 entry), summary aggiornata (projects_closed 0, projects_unclassified 9).
+- ✅ Commit `01ddf40` "docs(admin): definisce convenzione per documenti dimostrativi" — opencode-config `docs/dashboard.md`: sezione documenti amministrativi dimostrativi, is_test distinto da ledger_status, nessun nuovo valore nell'enum.
+- ✅ Commit `7f44ee6` "docs(ledger): definisce stati e criteri di verifica" — opencode-config `docs/dashboard.md`: sezione "Stati del ledger" con definizioni `missing`, `template-only`, `partial`, `updated` e regole di applicazione.
+- ✅ Commit `1bb0701` "docs(admin): qualifica ledger e fatture tracking come simulazione" — `vetronaviglio-tracking-mvp`: 5 documenti amministrativi marcati come dimostrativi (ledger, cashflow, solleciti, registro fatture, FATT-001-data).
+- ✅ Commit `5622f8e` "fix(data): classifica ledger demo tracking come partial" — `vetronaviglio-tracking-mvp` ledger_status `operativo` → `partial` in `projects-index.json`; diagnostico JSON Schema ora exit 0 (nessuna non conformità residua).
+
 **Completed (2026-07-23):**
 - ✅ Fixed normalizeName regex bug (`app/assets/app.js:12`): `[^a-z0-9]+` → `[^a-z0-9_]+` to preserve underscores in slugs (e.g. `gestione_spese_famiglia`)
 - ✅ Implemented `sync-from-projects.mjs` fully: reads all 5 JSON sources, regenerates portfolio-summary.json, validates data integrity
@@ -18,9 +27,9 @@
 - ✅ Resolved GitHub Pages deploy conflicts (local ahead of remote), pushed to main → auto-deploy via `pages.yml`
 
 **Next Steps:**
-- 🔄 Verificare che il deploy push→Pages continui a funzionare dopo il commit `bfaa068` e che il cron nightly non crei nuovi disallineamenti su `app/data/*`
-- 🔄 Backfill other anagrafica contacts (fornitori B2B)
-- 🔄 Context recovery and existing project integration
+- 🔄 Verificare che il deploy push→Pages continui a funzionare dopo i commit del 2026-10-27 (7 commit su zbn-ops-dashboard, opencode-config, vetronaviglio-tracking-mvp) e che il cron nightly non crei nuovi disallineamenti su `app/data/*`
+- 🔄 Monitorare il cron nightly (~04:10 UTC) su `refresh-data.yml` e verificare il deploy Pages automatico
+- 🔄 Backfill altri contatti anagrafica (fornitori B2B)
 - 🔄 Email per Chiara Garramone (blocco TDS vetronaviglio-tds-automation): serve l'indirizzo email per creare la bozza Gmail "Specifiche TDS 2.0 implementate e pubblicate"
 
 **Dashboard Status:**
