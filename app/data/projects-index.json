@@ -169,21 +169,6 @@
     "docs_path": "/data/workspace/Progetti/triathlon-planner-saas/docs"
   },
   {
-    "slug": "nuovo-sito-vetronaviglio",
-    "name": "Nuovo Sito Vetronaviglio",
-    "phase": "Da avviare",
-    "state": "pending",
-    "last_commit": "8ee7aa3",
-    "last_commit_relative": "21 giorni fa",
-    "next_action": "Decidere se il catalogo Excel va committato nel repo o gestito come asset esterno. Prossima sessione: verificare integrazione dati con il sito (WooCommerce o frontend custom).",
-    "revenue_eur": null,
-    "costs_eur": null,
-    "margin_eur": null,
-    "invoice_count": 0,
-    "ledger_status": "template-only",
-    "commercial_risk": "medium"
-  },
-  {
     "slug": "agis-lab",
     "name": "Agis Lab",
     "phase": "Confronto con il partner",
