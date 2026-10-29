@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-29T06:47:53.637Z",
+  "generated_at": "2026-10-29T17:20:31.576Z",
   "projects_active": 8,
   "projects_closed": 0,
-  "projects_unclassified": 9,
+  "projects_unclassified": 8,
   "followup_urgent": 3,
   "followup_pending": 5,
   "followup_snooze": 1,
   "commercial_flags_high": 5,
-  "commercial_flags_medium": 5,
+  "commercial_flags_medium": 6,
   "projects_test_count": 1,
   "revenue_total_eur": 0,
   "invoices_total": 0,
-  "ledger_template_only_count": 10
+  "ledger_template_only_count": 11
 }
